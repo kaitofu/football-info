@@ -7,10 +7,25 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 
+const axios = require('axios');
+
 export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  mounted() {
+    axios({
+      headers: { 'X-Auth-Token': 'b23df29ea8e94c24a284785921d5c666' },
+      url: 'https://api.football-data.org/v2/matches',
+      method: 'get'
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   }
 }
 </script>
